@@ -12,7 +12,7 @@ const initialAnimals = [
 export default function App({ Component, pageProps }) {
   const [animals, setAnimals] = useState(initialAnimals);
 
-  const animalCounts = animals.map((animal) => animal.count);//z.B. [4,0,3,5]
+  const animalCounts = animals.map((animal) => animal.count); //z.B. [3,0,3,5]
   const countSum = animalCounts.reduce((a, b) => a + b);
   const countAverage = countSum / animals.length;
   const dragonCount = animals.find((animal) => animal.name === "Dragons").count;
@@ -20,6 +20,7 @@ export default function App({ Component, pageProps }) {
   function handleAdd(id) {
     setAnimals(
       animals.map((animal) =>
+        //z.B.: 1 === 1  ? {id: 1, name: "Cats", count: 3, count: 4} : {id: 1, name: "Cats", count: 3}
         animal.id === id ? { ...animal, count: animal.count + 1 } : animal
       )
     );
@@ -30,7 +31,7 @@ export default function App({ Component, pageProps }) {
         ? { ...animal, count: Math.max(0, animal.count - 1) }
         : animal
     );
-    setAnimals(newArray);
+    setAnimals(newArray); //die setter-function ersetzt immer KOMPLETT den vorigen State (hier ein Array)
   }
 
   return (

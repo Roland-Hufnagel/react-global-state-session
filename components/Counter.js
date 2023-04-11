@@ -17,13 +17,14 @@ export default function Counter({ animal, onAdd, onSubtract }) {
   // function handleAdd() {
   //   setCount(count + 1);
   // }
-
-  
+  // function handleSubtract() {
+  //   setCount(Math.max(0, count - 1));
+  // }
 
   return (
     <Container>
       <AnimalName>{animal.name}:</AnimalName>
-      <button type="button" onClick={() => onSubtract(animal.id)}>
+      <button type="button" onClick={() => onSubtract(animal.id)}>{/* onClick wird eine anonyme Funktion zugewiesen, die (wenn geklickt wird) mit der animal.id aufgerufen wird*/}
         <span role="img" aria-label="Subtract one from count">
           ➖
         </span>
